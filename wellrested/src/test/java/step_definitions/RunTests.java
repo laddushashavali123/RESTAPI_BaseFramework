@@ -7,10 +7,15 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber --strict"},
+        /*plugin = {"pretty", "html:target/cucumber --strict"},*/
         features = "src/test/resources/features",
         tags = "@run",
-        snippets = SnippetType.CAMELCASE)
+        snippets = SnippetType.CAMELCASE,
+        plugin = {"pretty",
+                "html:target/cucumber",
+                "json:target/cucumber.json"
+                ,"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:reports/extent-report.html"
+        })
 public class RunTests {
 
 }
